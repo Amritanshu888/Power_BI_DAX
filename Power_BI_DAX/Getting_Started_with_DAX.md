@@ -1,0 +1,121 @@
+## DAX
+- DAX refers to Data Analysis Expression and its a functional language in power bi where we have a lot of functions
+- Open power bi desktop in the top ribbon we have this modelling tab click on it then in the center we have a option 'New Table' 
+- Click on it, then a formula bar will open where initally 'Table =' will be there, we will remove it
+- In the formula bar we will write: Date Table = CALENDAR(DATE(2025,01,01),DATE(2029,01,01)) --> after writing this we will simply press enter
+- Note: In power bi automatically functions will appear the moment we start typing its name and there will be a arrow beside hovering on which u will get to know what this function does, also when u click on the particular function when its suggested to u in power bi --> it will also tell u the parameters, the arguments which this function will take and will also tell u what this particular function does.
+- Now on the right hand side under the data pane u can see that we have this date table, on the left pane under the icon for report view we also have 'Table View' click on it --> here u will see that we have this table and this table is having one column and the name of this column is date.
+- Table was created using the calendar and date function 
+- On the left hand side we have a icon for report view click on it to go to the report view 
+- Now under the data pane we will right click on this date table under the data pane and then we can see here we have something called as 'New column' so i will click on new column a formula bar will again open and then i will create a new column
+- Let's say i want to extract the month nunber from the dates available in the date column
+- DAX: Column = MONTH('Date Table'[Date].[Date])  ----> Date column in 'Date Table' from that we are extracting the 'Date' which is basically the values
+- After writing this DAX press enter
+- Now in the left pane we will simply click on the table view and we will see that a new column has been added named 'Column', in that column i will further click here on this dropdown and then will select the option 'Sort descending' 
+- If we want to change the name of this column which is 'Column' itself ----> Then go back to the report view in the right hand side under 'Data Pane' we will have that 'Column' click on it and then the formula bar will come up in that bar we will havd the dax query written: Column = MONTH('Date Table'[Date].[Date])
+- Here we will change the 'Column' to the name we want like 'Month Number'
+- Now if we go back to the table view again we will be able to see the 'Month Number' column again
+- Go to report view again and now let's say we want to add a measure, measures are basically dynamic calculations which can help us get useful insights from the data 
+- Right click on the 'Date Table' under the Data pane on the right hand side, then we will have a option called 'New Measure' click on it, and then again a formula bar will open: Measure = 
+- Let's say through this measure we are interested in finding out the SUM of all the month numbers 
+- DAX function: SUM DAX = SUM('Date Table'[Month Number]) ----> Then press enter
+- In the right pane we expand the 'Visualizations' pane, then under the visualizations pane u can see that we have a icon for 'Card Visual' click on it and this is going to create a blank card for us, then on the right hand side under the 'Data Pane' we have the measure 'SUM DAX' double click on this 'SUM DAX' and u can simply drag and drop it here in the fields bucket under the visualizations pane
+- We will get the number in the Card
+
+## Some DAX functions
+- DAX refers to data analysis expressions and it is a built-in language in power bi that is used to do certain calculations that help us fulfill certain bussiness needs and it basically helps us to represent certain insights and information on the reports or the dashboards that we create 
+- It is a functional language so there are many functions that we use in DAX 
+- DAX is basically used to create: Tables, Columns and Measures
+- Expand the Data Pane where initially we will have no data so we click on 'Get Data' or under the Home Tab we have 'Get Data' click on that
+- Click on the Modelling Tab in the top ribbon, there is a option called 'New Table', when we hover over it it says: Write a DAX expression to create a new Table
+- Will simply click here on this option 
+- Formula bar will open with ---> Table = 
+- We can change 'Table' to provide a new name to the table of our choice
+- Date Table = CALENDAR(DATE(2022,01,01),DATE(2023,01,01))
+- Press enter the date table will be created 
+- U can see this table in the right hand side under the Data Pane, a column has been added to this table 'Date'
+- To rename this column double click on this date column and then rename it as 'Date Column' and then press enter
+- To see the table that has been created u can click on the table view in the left pane
+- There we will have the column 'Date Column' on the column header we will have a dropdown click on it and then click on 'Sort Ascending' option or 'Sort Descending' 
+- The format of the values present in this 'Date Column' is basically in date time format and we want it to be in 'Date' format, click here on this column and then in the top ribbon we have the option of format, there we have a dropdown click on it, a list will appear, in that list under 'Date Formats' we can select the format we want ------> The dates will be in the required format
+- Then go back to the report view 
+- Let's say i m interested in representing the number of the months for each date in a seperate column in each table so we can use month function for that
+- Simply right click on 'Date Table' in the right pane and then click on 'New Column' ---> This will be adding a new column
+- New Formula Bar will open
+- Month Number = MONTH('Date Table'[Date Column].[Date]) ----> Since we want to select the date key
+- Then press enter
+- Click on the table view we will have the new column in the table
+
+- Now again go back to the report view
+- In the right hand side in the Data Pane we had 'Data Table' 
+- Right click on it, and then click on the 'New Column' ---> Formula bar will open
+- Weekday = WEEKDAY('Date Table'[Date Column].[Date],1) ---> This function returns a number from 1 to 7 identifying the day of the week of a date 
+- Why Passing the '1' parameter ?? ---> Along with 1 we have two more options i.e. 2,3
+- Here 1 = (Sunday = 1 through Saturday = 7), 2 = (Monday = 1 through Sunday = 7), 3 = (Monday = 0 through Sunday = 6)
+- Here we passed '1' parameter as we want Sunday to be represented by 1 and Saturday to be represented by 7
+- After writing the DAX query press enter 
+- Now if we go back to the Table View, we will have the 'Weekday' column there, if we click on the dropdown of the 'Weekday' column u will be able to see that it consists of 7 distinct values from 1 to 7 representing different days 
+
+- Again in the right hand side under the Data Pane we have 'Date Table' right click on it and then click on 'New Column' 
+- The formula bar will again open where we will write:
+- Weeknum = WEEKNUM('Date Table'[Date Column].[Date],1) ---> This function returns the week number in the year and again here we need to provide the date and return type 
+- Along with '1' there will be various return type we can hover over any of them to know how it will return values
+- After writing press enter
+- Click on the table view in the left pane under report view to see how this column looks
+- If u click on the dropdown in the column u will be able to see the distinct values that we have here
+
+- Now we want to represent different months by the short names 
+- Right click on this 'Date Table' in the data pane and then click on 'New Column' 
+- Formula bar will open
+- Month Short Name = FORMAT('Date Table'[Date Column].[Date],"MMM") 
+- After writing this press enter
+- Then in the left pane under report view click on the 'Table View'
+- U can see that the column 'Month Short Name' has been added, click on the dropdown u will be able to see the distinct months that we have in our dataset
+
+- Let's say we don't want to add short names but we want to add complete names for the month so we again click on the report view
+- Right Click on the 'Date Table' in the right pane, then click on 'New Column' now again a formula bar will open
+- Here we write: Month Full Name = FORMAT('Date Table'[Date Column].[Date],"MMMM")  ----> Now press enter
+- Now if i again click on the 'Table View' u can see that a new Column has been added by the name 'Month Full Name', it represents the full name of the different months that we have in our dataset corresponding to each date
+
+- Go back to the report view, let's say we want to add one more column where we want to represent the short name and full name of the weekdays as well
+- Right click on this 'Date Table' in the right side in 'Data Pane' and then click on 'New Column' then a formula bar will open
+- WeekDay short Name = FORMAT('Date Table'[Date Column].[Date],"DDD") ---> Then press enter
+- Now click on the 'Table View' u can see that this is the column that will be added ----> This column consists of the short names of different weekdays
+
+- Let's say further we want to show and represent the full names of the weekdays 
+- So from here in the table view only we will right click on the 'Date Table' in the right hand side in the data pane and then click on 'New Column' a formula bar will open 
+- WeekDay Full Name = FORMAT('Date Table'[Date Column].[Date],"DDDD") ---> Then press enter
+- Now in the 'Table View' u can see that this is the column that will be added ----> This column consists of the full names of different weekdays
+- If we further click on the new dropdown of the new column we will be able to see the distinct values of the Full Day Weeks corresponding to each date
+
+- So let's say we want that the values in 'Month Short Name' and 'WeekDay Short Name' column needs to be concatenated and a new column to be created and that column should consists of month short name and week short name combined
+- So we can use concatenate function for that, right click on the 'Date Table' in the data pane and then click on 'New Column' and a formula bar will open
+- There we write: Con1 Fun  = CONCATENATE('Date Table'[Month Short Name],'Date Table'[WeekDay short name])  ---> this function joins two strings into one string
+- After writing this press enter
+- Con1 Fun column will now be created, two string will be concatenated but here between these two string there will be no gap no delimeter will be there it will be like: JanSat or JanSun
+- Now we want that a delimeter should also be present between ---> We can also do that using a concatenate function
+- Right click on the 'Date Table' again in the data pane, then click on 'New Column' again a formula bar will open
+- DAX query: Con 2 Fun WD = CONCATENATE(CONCATENATE('Date Table'[Month Short Name],"-"),'Date Table'[WeekDay short Name])
+- First we will combine 'Month Short Name' column with a delimeter
+- Now in this new 'Con 2 Fun WD' column the values will be like: Jan-Sat ---> Here we have added a delimeter "-", we can add any delimeter of our choice like " " space or anything else
+- 
+## Left, Right, Mid and Length function
+- Let's say we want to extract first 3 characters from 'Month Full Name' column
+- Since we are interested in extracting the first 3 characters from the left from the month full name column so we can achieve that using the left function
+- Right click on the 'Date Table' in the data pane and then click on 'New Column' then a formula bar will open
+- DAX function: Left Fun = LEFT('Date Table'[Month Full Name],3) ---> We will write 3 here since we want to extract 3 characters from the left ----> Then press enter
+- Now u can see that a new column 'Left Fun' has been created ----> And first 3 characters has been extracted from the 'Month Full Name' column
+- Let's say we want to extract the given no. of characters from the right from the same column
+- Right CLick on 'Date Table' ---> then click 'New Column' ----> A formula bar will open
+- DAX function: Right Fun = RIGHT('Date Table'[Month Full Name],2) ---> We want to extract two characters from the right, then press enter
+- New Column will be created ----> Two characters from the right have been extracted
+- Let's say we are interested in knowing abt the length of the characters in any given column for all different values in a given column, right click on the 'Date Table' ---> New Column ----> A formula bar will open
+- For this we will be using length function
+- Length Fun = LEN('Date Table'[Month Full Name]) ---> Press enter
+- New column will be created 'Length Fun' ----> This will show u the length of characters in each cell value for 'Month Full Name' column
+- Mid Function:
+- Right click on the 'Date Table' in the data pane then click on 'New Column' ----> A formula bar will open
+- MID Fun = MID('Date Table'[Month Full Name],1,2) -----> Returns a string of characters from the middle of a test string, given a starting position and length
+- Starting position is from character 1 and the length is 2 characters
+- We can click on the dropdown of the column and see the distinct values this column has
+
